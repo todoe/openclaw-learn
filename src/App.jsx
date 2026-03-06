@@ -953,6 +953,22 @@ function LessonScreen({ lesson, t, onBack, onComplete, onToggleLanguage, languag
   };
 
   const getLessonContent = () => {
+    if (lesson.type === 'quiz') {
+      const quizQuestions = getQuizQuestions(lesson.id);
+      if (quizQuestions.length > 0) {
+        return (
+          <div className="lesson-content">
+            <h3>{lesson.title}</h3>
+            <QuizComponent 
+              questions={quizQuestions}
+              t={t}
+              onComplete={() => setShowComplete(true)} 
+            />
+          </div>
+        );
+      }
+    }
+
     const lessonData = t.lessons[lesson.id];
     if (!lessonData) {
       return (
@@ -963,19 +979,6 @@ function LessonScreen({ lesson, t, onBack, onComplete, onToggleLanguage, languag
             <div className="placeholder-icon">🚧</div>
             <p>Coming soon!</p>
           </div>
-        </div>
-      );
-    }
-
-    if (lesson.type === 'quiz') {
-      return (
-        <div className="lesson-content">
-          <h3>{lessonData.title}</h3>
-          <QuizComponent 
-            questions={getQuizQuestions(lesson.id)}
-            t={t}
-            onComplete={() => setShowComplete(true)} 
-          />
         </div>
       );
     }
