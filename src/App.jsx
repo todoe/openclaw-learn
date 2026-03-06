@@ -96,7 +96,7 @@ const translations = {
         xpReward: "+50 XP",
         continue: "Continue Learning"
       },
-      quiz: {
+      quizLabels: {
         question: "Question",
         of: "of",
         next: "Next",
@@ -442,7 +442,7 @@ const translations = {
         xpReward: "+50 XP",
         continue: "继续学习"
       },
-      quiz: {
+      quizLabels: {
         question: "问题",
         of: "/",
         next: "下一题",
@@ -1095,7 +1095,7 @@ function QuizComponent({ questions, t, onComplete }) {
   return (
     <div className="quiz-container">
       <div className="quiz-progress">
-        {t.common.quiz.question} {currentQuestion + 1} {t.common.quiz.of} {questions.length}
+        {t.common.quizLabels.question} {currentQuestion + 1} {t.common.quizLabels.of} {questions.length}
       </div>
       
       <div className="question-box">
@@ -1123,7 +1123,7 @@ function QuizComponent({ questions, t, onComplete }) {
       
       {answered && (
         <button className="next-button" onClick={nextQuestion}>
-          {currentQuestion < questions.length - 1 ? t.common.quiz.next : t.common.quiz.finish}
+          {currentQuestion < questions.length - 1 ? t.common.quizLabels.next : t.common.quizLabels.finish}
         </button>
       )}
     </div>
